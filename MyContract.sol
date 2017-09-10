@@ -1,6 +1,10 @@
 pragma solidity ^0.4.0;
 
 contract MyToken {
+  /* set up event (empty function that will be called to help clients like eth wallet keep
+     track of activities happening in the contract*/
+  event Transfer (address indexed from, address indexed to, uint256 value);
+
   // set up basic info about contract
 
   string public name;
@@ -16,7 +20,7 @@ contract MyToken {
 
   // Create a few tokens on startup
   // Constructor function that runs once the contract is uploaded to the network
-  // This sets the balance of msg.sender, the user who deployed the contract
+  // Initializes contract with initial supply tokens to the creator of the contract
 
   function MyToken (uint256 initialSupply, string tokenName, string tokenSymbol, uint8 decimalUnits) {
     balanceOf[msg.sender] = initialSupply; // give creator all initial tokens;
