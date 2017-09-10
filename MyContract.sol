@@ -37,5 +37,8 @@ contract MyToken {
     // Add and subtract new balances
     balanceOf[msg.sender] -= _value;
     balanceOf[_to] += _value
+
+    // Notify anyone who is listening that this transfer took place
+    Transfer(msg.sender, _to, _value);
   }
 }
